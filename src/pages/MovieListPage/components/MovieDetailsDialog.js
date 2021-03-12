@@ -15,6 +15,7 @@ import { getImdbUrlByTitle } from "../../../utils/imdb";
 
 const MovieDetailsDialog = (props) => {
   const { title, isOpen, closeDialog } = props;
+
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(false);
 

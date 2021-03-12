@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { Box, Button, TextField } from "@material-ui/core";
 
 const SearchComponent = (props) => {
-  const [searchText, setSearchText] = useState("");
-
   const { search, loading } = props;
+
+  const [searchText, setSearchText] = useState("");
 
   const submit = async (event) => {
     event.preventDefault();

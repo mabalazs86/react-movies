@@ -50,16 +50,16 @@ const MovieListPage = () => {
   ] = useLazyQuery(SearchRelatedMovieQuery);
   const [relatedMovie, setRelatedMovie] = useState(null);
 
-  const search = async (searchText) => {
+  const search = (searchText) => {
     setRelatedMovie(null);
-    await searchMoviesQuery({
+    searchMoviesQuery({
       variables: { query: searchText },
     });
   };
 
-  const searchRelatedMovies = async (movie) => {
+  const searchRelatedMovies = (movie) => {
     setRelatedMovie(movie);
-    await searchRelatedMoviesQuery({
+    searchRelatedMoviesQuery({
       variables: {
         id: movie.id,
       },

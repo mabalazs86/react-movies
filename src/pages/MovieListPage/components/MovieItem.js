@@ -47,6 +47,9 @@ const MovieItem = (props) => {
   const classes = useStyles();
   const [isOpenDetailsDialog, setIsOpenDetailsDialog] = useState(false);
 
+  const openDetailsPopup = () => setIsOpenDetailsDialog(true);
+  const closeDetailsPopup = () => setIsOpenDetailsDialog(false);
+
   return (
     <>
       <Grid item>
@@ -55,7 +58,7 @@ const MovieItem = (props) => {
             <Typography
               variant="h5"
               className={classes.title}
-              onClick={() => setIsOpenDetailsDialog(true)}
+              onClick={() => openDetailsPopup()}
             >
               {movie.name}
             </Typography>
@@ -86,7 +89,7 @@ const MovieItem = (props) => {
               size="small"
               variant="outlined"
               color="secondary"
-              onClick={() => setIsOpenDetailsDialog(true)}
+              onClick={() => openDetailsPopup()}
             >
               Get details
             </Button>
@@ -104,7 +107,7 @@ const MovieItem = (props) => {
       <MovieDetailsDialog
         title={movie.name}
         isOpen={isOpenDetailsDialog}
-        closeDialog={() => setIsOpenDetailsDialog(false)}
+        closeDialog={() => closeDetailsPopup()}
       />
     </>
   );
