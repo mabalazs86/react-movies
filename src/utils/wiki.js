@@ -10,8 +10,8 @@ const generateWikiUrlWithProps = (props) => {
   return propsUrl;
 };
 
-const generateAbsoluteWikiUrl = (url) =>
-  url.replace(/\/wiki\//g, "https://en.wikipedia.org/wiki/");
+const generateAbsoluteWikiUrlsInText = (text) =>
+  text.replace(/\/wiki\//g, "https://en.wikipedia.org/wiki/");
 
 export const getWikiInfo = async (title) => {
   const props = {
@@ -45,5 +45,5 @@ export const getWikiParagraph = async (pageid) => {
   const result = await axios(generateWikiUrlWithProps(props));
   const wikiContent = result?.data?.parse.text["*"];
   const firstParagraph = $(wikiContent).find("p:not([class])").html();
-  return generateAbsoluteWikiUrl(firstParagraph);
+  return generateAbsoluteWikiUrlsInText(firstParagraph);
 };

@@ -40,7 +40,7 @@ const MovieDetailsDialog = (props) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         fullWidth
-        onEntered={() => !details && getMovieDetails(title)}
+        onEntered={() => !details && getMovieDetails()}
       >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>

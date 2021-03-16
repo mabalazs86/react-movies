@@ -41,12 +41,20 @@ const SearchRelatedMovieQuery = gql`
 const MovieListPage = () => {
   const [
     searchMoviesQuery,
-    { loading: loadingSearchMoviesQuery, data: dataSearchedMovies },
+    {
+      loading: loadingSearchMoviesQuery,
+      called: calledSearchMoviesQuery,
+      data: dataSearchedMovies,
+    },
   ] = useLazyQuery(SearchMovieQuery);
 
   const [
     searchRelatedMoviesQuery,
-    { loading: loadingSearchRelatedMoviesQuery, data: dataRelatedMovies },
+    {
+      loading: loadingSearchRelatedMoviesQuery,
+      called: calledSearchRelatedMoviesQuery,
+      data: dataRelatedMovies,
+    },
   ] = useLazyQuery(SearchRelatedMovieQuery);
   const [relatedMovie, setRelatedMovie] = useState(null);
 
@@ -73,6 +81,7 @@ const MovieListPage = () => {
   };
 
   const isLoading = loadingSearchRelatedMoviesQuery || loadingSearchMoviesQuery;
+  const isCalled = calledSearchMoviesQuery || calledSearchRelatedMoviesQuery;
 
   return (
     <>
@@ -81,6 +90,7 @@ const MovieListPage = () => {
         <MovieList
           movies={getMovies()}
           isLoading={isLoading}
+          isCalled={isCalled}
           relatedMovie={relatedMovie}
           searchRelatedMovies={searchRelatedMovies}
         />
